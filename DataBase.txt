@@ -1,0 +1,187 @@
+create table users 
+
+  (   ID  INT  PRIMARY KEY ,
+      username  varchar(50)  NOT NULL UNIQUE ,
+      user_password  varchar(50)   NOT NULL ,
+	  email  varchar(50) NOT NULL  UNIQUE ,
+    
+  ) ;
+
+  create table admins 
+
+  (   ID  INT  PRIMARY KEY ,
+      username  varchar(50)  NOT NULL UNIQUE ,
+      user_password  varchar(50)   NOT NULL ,
+	  email  varchar(50) NOT NULL  UNIQUE ,
+    
+  ) ;
+
+  create table cars 
+  ( ID INT PRIMARY KEY ,
+    manufacturer_type  varchar(50)  NOT NULL ,
+    model varchar(50)  NOT NULL ,
+	price  INT NOT NULL ,
+	manufacture_year INT NOT NULL,
+	car_image IMAGE);
+
+	create table colors 
+	(  ID INT  REFERENCES cars (ID)  , color varchar(50), number_of_cars INT NOT NULL,
+	    
+	PRIMARY KEY ( ID,color));
+
+	create sequence users_ID
+	start with 1
+	increment by 1;
+	 
+	create sequence admins_ID
+	start with 1
+	increment by 1;
+
+	create sequence cars_ID
+	start with 1
+	increment by 1;
+
+	insert into users
+	values(next value for users_ID ,'lalaamrr', 'alaa12345', 'lalaamrr@gmail.com'),
+	(next value for users_ID ,'asmaa', 'asmaa12345', 'asmaa@gmail.com'),
+	(next value for users_ID ,'asem', 'asem12345', 'asem@gmail.com'),
+	(next value for users_ID ,'eslam', 'eslam12345', 'eslam@gmail.com');
+	 
+	insert into admins
+	values(next value for admins_ID, 'alaaadel', 'adel12345', 'alaaadel@gmail.com'),
+	(next value for admins_ID, 'alaamostafa', 'mostafa12345', 'alaamostafa@gmail.com');
+
+	insert into cars 
+	SELECT next value for cars_ID, 'kia', 'pegas', 239900, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\kia pegas 2020.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'chevorlet', 'aveo', 196000, 2019, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\chevorlet aveo 2019.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'jeep', 'renegade', 485000, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\jeep renegade 2020.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'mercedes', 'a180', 595000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\mercedes a180 2021.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Hyundai', 'Accent', 246900, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Hyundai Accent RB 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Hyundai', 'Elantra', 266900, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Hyundai Elantra HD 2021.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Skoda', 'Octavia', 359900, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Skoda Octavia 2020.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Peugeot', '301', 269900, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Peugeot 301 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Fiat', 'Tipo', 259900, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Fiat Tipo 2021.jpg', Single_Blob) as image;
+	
+	insert into cars 
+	SELECT next value for cars_ID, 'Chevrolet', 'Optra', 220900, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Chevrolet Optra 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Kia', 'Rio', 340000, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Kia Rio 2020.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Kia', 'Grand Cerato', 339900, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Kia Grand Cerato 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Kia', 'Sportage', 454900, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Kia Sportage 2021.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Opel', 'Astra', 320000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Opel Astra 2021.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Renault', 'Logan', 229500, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Renault Logan 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Toyota', 'Corolla', 323000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Toyota Corolla 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Land Rover', 'Range Rover Evoque', 1450000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Land Rover Range Rover Evoque 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Lada', 'Granta', 205000, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Lada Granta 2020.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Geely', 'Emgrand X7', 309000, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Geely Emgrand X7 2020.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Mitsubishi', 'Xpander', 335000, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Mitsubishi Xpander 2020.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Ford', 'Fusion', 589900, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Ford Fusion 2020.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Nissan', 'Sunny', 201000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Nissan Sunny 2021.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Volkswagen', 'Passat', 495000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Volkswagen Passat 2021.jpg', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'Mazda', '3', 329900, 2020, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\Mazda 3 2020 Automatic.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'BMW', '118', 600000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\BMW 118 2021.png', Single_Blob) as image;
+
+	insert into cars 
+	SELECT next value for cars_ID, 'BMW', 'X1', 748000, 2021, BulkColumn
+	FROM Openrowset( Bulk 'E:\cars\BMW X1 2021.png', Single_Blob) as image;
+
+	insert into colors
+	values(1, 'blue',1),
+	(1, 'red',2), (1, 'black',3),
+	(2, 'white',1), (3, 'yellow',2),
+	(3, 'green',3), (3, 'red',1),
+	(4, 'silver',2), (4, 'black',3),
+	(5, 'red',6), (5, 'silver',7),
+	(5, 'black',3), (6, 'brown',2),
+	(6, 'gray',5), (6, 'silver',10),
+	(7, 'gray',6), (7, 'black',3),
+	(8, 'red',7), (8, 'silver',13),
+	(9, 'black',2), (9, 'gray',3),
+	(9, 'white',5), (10, 'red',5),
+	(10, 'blue',4), (10, 'black',2),
+	(11, 'white',8), (11, 'red',6),
+	(12, 'silver',3), (12, 'red',5),
+	(12, 'black',1), (13, 'red',3),
+	(14, 'white',7), (14, 'black',4),
+	(15, 'brown',5), (15, 'black',3),
+	(15, 'blue',2), (16, 'silver',10),
+	(16, 'gray',6), (17, 'silver',3),
+	(18, 'red',8), (18, 'black',4),
+	(19, 'white',6), (19, 'silver',5),
+	(20, 'gray',2), (21, 'black',3),
+	(21, 'silver',2), (22, 'black',10),
+	(22, 'red',7), (22, 'white',5),
+	(23, 'gray',4), (23, 'blue',2),
+	(24, 'red',5), (24, 'silver',1),
+	(24, 'white',2), (25, 'gray',7),
+	(26, 'white',3), (26, 'black',2);

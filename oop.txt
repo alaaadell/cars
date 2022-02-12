@@ -1,0 +1,21 @@
+override
+deleteCar: admin from admin or user 193/ user 122
+loginByUsername: user 22
+loginByEmail: user 28
+correctLogin: user 34
+loginByUsername: admin 99
+loginByEmail: admin 105
+correctLogin: admin 66
+
+overloading
+updateCar: admin 46 27
+getCarNumber: user 96 106
+increaseColors: admin 115  120
+addColors: admin 172 179
+
+inheritance
+userOrAdmin-->person
+user, admin-->userOrAdmin
+
+abstraction
+userOrAdmin
